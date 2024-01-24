@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Філадельфія з лососем",
+    "image": "./img/sushi1.jpg",
+    "price": "230",
+    "category": "0",
+    "options": ["свіжий", "солений"],
+    "type": 2,
+    "optionsbottom": ["авокадо", "огірок"]
+  },
+  {
+    "title": "Філадельфія з вугрем",
+    "image": "./img/sushi2.jpg",
+    "price": "300",
+    "category": "1",
+    "type": 1,
+    "optionsbottom": ["авокадо", "огірок"]
+  },
+  {
+    "title": "Філадельфія MIX",
+    "image": "./img/sushi3.jpg",
+    "price": "290",
+    "type": 2,
+    "category": "2",
+    "optionsbottom": ["авокадо", "огірок"]
+  },
+  {
+    "title": "Філадельфія з тунцем",
+    "image": "./img/sushi4.jpg",
+    "price": "280",
+    "category": "3",
+    "type": 1,
+    "optionsbottom": ["авокадо", "огірок"]
+  },
+  {
+    "title": "Каліфорнія з лососем",
+    "image": "./img/sushi5.jpg",
+    "price": "220",
+    "category": "4",
+    "type": 1,
+    "options": ["свіжий", "солений"],
+    "optionsbottom": ["авокадо", "огірок"]
+  }
+]
