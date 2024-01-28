@@ -1,0 +1,72 @@
+.navigation-container {
+  margin-top: 30px;
+}
+.navigation {
+  position: relative;
+  align-items: center;
+  align-items: baseline;
+
+  .navigation-kinds {
+    order: 2;
+    .nav-active {
+      background-color: #282828;
+      color: #fff;
+      pointer-events: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-right: 10px;
+      padding: 15px;
+      font-weight: 800;
+    }
+    .nav-unactive {
+      background: #eceaea;
+    }
+    .nav-kinds__item {
+      border-radius: 30px;
+      background-color: #f9f9f9;
+      margin-right: 10px;
+      padding: 15px;
+      font-weight: 800;
+      transition: linear 0.2s;
+      cursor: pointer;
+      &:hover {
+        background-color: #f8f3f3;
+      }
+    }
+  }
+
+  .nav-sorting {
+    transition: linear 0.3s;
+    p {
+      color: #fe5f1e;
+    }
+  }
+  .nav-text-bold {
+    font-weight: 700;
+  }
+}
+.nav-drawer {
+  width: 132px;
+  // height: 136px;
+  // position: absolute;
+  left: 100px;
+  right: 1000px;
+  background: #fff;
+
+  box-shadow: -2px -2px 27px 0px rgba(0, 0, 0, 0.1);
+  .naw-drawer-text-selected {
+    background-color: rgba(254, 93, 30, 0.08);
+    color: #fe5f1e;
+    padding: 15px 10px;
+    cursor: pointer;
+  }
+  .naw-drawer-text {
+    padding: 15px 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(254, 95, 30, 0.05);
+      color: #fe5f1e;
+    }
+  }
+}

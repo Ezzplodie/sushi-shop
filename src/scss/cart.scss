@@ -1,0 +1,109 @@
+.cart {
+  position: fixed;
+  // box-shadow: -2px 1px 20px 0px rgba(186, 186, 186, 1);
+  padding-top: 88px;
+  // display: none;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow-y: auto; /* Добавляем вертикальную прокрутку */
+  background-color: #f0f0f0; /* Цвет фона контейнера */
+  z-index: 10;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  .cart-container {
+    padding: 10px 20px;
+  }
+
+  h3 {
+    margin: 20px 0;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .cart-items-container {
+    padding-bottom: 30px;
+  }
+  .cart-item {
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+  }
+  .info {
+    flex-flow: wrap;
+    display: flex;
+    .ident {
+      margin-top: 10px;
+      padding-right: 8px;
+    }
+  }
+  .cart-button {
+    width: 24px;
+    height: 24px;
+    background-color: #84c502;
+    border-radius: 100%;
+    color: #fff;
+    font-weight: bolder;
+  }
+  .quantity {
+    margin: 0 5px;
+  }
+}
+
+// .cart-items-container::after {
+//   content: "";
+//   position: absolute;
+//   // top: 0;
+//   bottom: 280px;
+//   left: 0;
+//   width: 100%; /* 100% ширина видимой области браузера */
+//   height: 2px;
+//   background-color: rgba(0, 0, 0, 0.08);
+// }
+
+.user-block {
+  padding: 30px 0;
+  .text {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    width: 80%;
+    padding: 5px;
+  }
+  form {
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+}
+
+.cross {
+  width: 30px;
+  position: relative;
+}
+
+.cross::before,
+.cross::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: black;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.cross::before {
+  transform: rotate(45deg);
+}
+
+.cross::after {
+  transform: rotate(-45deg);
+}
+.background-drawer {
+  display: none;
+  width: 100%;
+  background-color: #15151434;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+}

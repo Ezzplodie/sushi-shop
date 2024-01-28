@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 export default function Header() {
+  const { items, totalPrice } = useSelector((state) => state.cart);
   return (
     <header className="header d-flex justify-between">
       <Link to="/">
@@ -14,10 +16,10 @@ export default function Header() {
       </Link>
 
       <div className="header-cart d-flex">
-        <p className="">520 грн</p>
+        <p className="">{totalPrice} грн</p>
         <div className="header-line"> </div>
         <img src="./img/cart.svg" alt="" />
-        <p>3 шт.</p>
+        <p>{items.length} шт.</p>
       </div>
     </header>
   );

@@ -9,9 +9,6 @@ import { setActiveCategory } from "../redux/slices/filterSlice";
 const Home = () => {
   const dispatch = useDispatch();
   const activeCategory = useSelector((state) => state.filter.activeCategory);
-  console.log("id category", activeCategory);
-  // const [activeCategory, setActiveCategory] = useState(0);
-  const [onAddToCart, setOnAddToCart] = useState([]);
   const [activeCategoryValue, setActiveCategoryValue] = useState("Все меню");
   const onClickCategory = (value, index) => {
     onChangeCategory(index);
@@ -21,6 +18,8 @@ const Home = () => {
     console.log(index);
     dispatch(setActiveCategory(index));
   };
+
+  const [onAddToCart, setOnAddToCart] = useState([]);
   const onClickCart = (sushi) => {
     setOnAddToCart((prev) => [...prev, sushi]);
   };

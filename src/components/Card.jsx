@@ -1,24 +1,27 @@
 import React, { useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../redux/slices/cartSlice";
 export default function Card({
   image,
   title,
   price,
   options,
   optionsbottom,
-  onClickCart,
+  id,
 }) {
-  const [pizzaCount, setPizzaCount] = useState(0);
-  const onClickAddPizza = () => {
-    setPizzaCount(pizzaCount + 1);
-  };
-  const [activeOption, setActiveOption] = useState(0);
-  const [activeOptionBottom, setActiveOptionBottom] = useState(1);
-  const onSetActiveOption = (index) => {
-    setActiveOption(index);
-  };
-  const onSetActiveOptionBottom = (index) => {
-    setActiveOptionBottom(index);
+  const dispatch = useDispatch();
+  const cartItem = useSelector((state) =>
+    state.cart.items.find((obj) => obj.id === id)
+  );
+  const addedCount = cartItem ? cartItem.count : 0;
+  const onClickAdd = () => {
+    const item = {
+      id,
+      title,
+      price,
+      image,
+    };
+    dispatch(addItem(item));
   };
 
   return (
@@ -33,13 +36,7 @@ export default function Card({
           {options && (
             <ul className="d-flex justify-around options-upper border">
               {options.map((obj, i) => (
-                <li
-                  key={obj}
-                  onClick={() => onSetActiveOption(i)}
-                  className={
-                    activeOption === i ? "active" : "options-upper-text"
-                  }
-                >
+                <li key={obj} className={"options-upper-text"}>
                   {obj}
                 </li>
               ))}
@@ -47,14 +44,8 @@ export default function Card({
           )}
           {optionsbottom && (
             <ul className="d-flex justify-between options-upper">
-              {optionsbottom.map((obj, i) => (
-                <li
-                  key={obj}
-                  onClick={() => onSetActiveOptionBottom(i)}
-                  className={
-                    activeOptionBottom === i ? "active" : "options-upper-text"
-                  }
-                >
+              {optionsbottom.map((obj) => (
+                <li key={obj} className={"options-upper-text"}>
                   {obj}
                 </li>
               ))}
@@ -63,11 +54,11 @@ export default function Card({
         </div>
       </div>
       <div className="cart-price d-flex justify-between">
-        <p>від {price} ₴</p>
-        <button className="cart-price-add d-flex">
+        <p>{price} ₴</p>
+        <button onClick={onClickAdd} className="cart-price-add d-flex">
           <div className="testing"> </div>
-          <p onClick={() => onClickCart()}>Добавити</p>
-          <p className="pizza-count">{pizzaCount}</p>
+          <p>Добавити</p>
+          {addedCount > 0 && <p className="pizza-count">{addedCount}</p>}
         </button>
       </div>
     </div>
