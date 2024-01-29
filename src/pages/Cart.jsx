@@ -1,160 +1,25 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../redux/slices/cartSlice";
+import CartItem from "../components/cartItem";
 
-const Cart = ({ onAddToCart }) => {
-  console.log(onAddToCart, "WTFFFF");
-  const [onCartOpen, setOnCartOpen] = useState(true);
-  const onCloseCart = () => {
-    setOnCartOpen(!onCloseCart);
-    console.log("CART CLOSED");
-  };
+const Cart = () => {
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.cart.items);
   return (
     <>
-      <div className="background-drawer">
-        <aside className="cart d-flex">
-          <div className="cart-container">
-            <div className="d-flex justify-between">
-              <h3>Ваше замовлення</h3>
-              <div onClick={onCloseCart} className="cross"></div>
-            </div>
-            <div className="cart-items-container">
-              <div className="cart-item d-flex p-10">
-                <div className="info">
-                  <div className="ident">
-                    <p className="cart-title">
-                      Філадельфія з лососем та креветкою
-                    </p>
-                    <div className="ident d-flex align-center">
-                      <button className="cart-button">+</button>
-                      <div className="quantity">1</div>
-                      <button className="cart-button">-</button>
-                    </div>
-                  </div>
-                </div>
-                <img src=".\img\sushi1.jpg" alt="" width={80} height={80} />
-              </div>
-              <div className="cart-item d-flex p-10">
-                <div className="info">
-                  <div className="ident">
-                    <p className="cart-title">
-                      Філадельфія з лососем та креветкою
-                    </p>
-                    <div className="ident d-flex align-center">
-                      <button className="cart-button">+</button>
-                      <div className="quantity">1</div>
-                      <button className="cart-button">-</button>
-                    </div>
-                  </div>
-                </div>
-                <img src=".\img\sushi1.jpg" alt="" width={80} height={80} />
-              </div>
-              <div className="cart-item d-flex p-10">
-                <div className="info">
-                  <div className="ident">
-                    <p className="cart-title">
-                      Філадельфія з лососем та креветкою
-                    </p>
-                    <div className="ident d-flex align-center">
-                      <button className="cart-button">+</button>
-                      <div className="quantity">1</div>
-                      <button className="cart-button">-</button>
-                    </div>
-                  </div>
-                </div>
-                <img src=".\img\sushi1.jpg" alt="" width={80} height={80} />
-              </div>
-              <div className="cart-item d-flex p-10">
-                <div className="info">
-                  <div className="ident">
-                    <p className="cart-title">
-                      Філадельфія з лососем та креветкою
-                    </p>
-                    <div className="ident d-flex align-center">
-                      <button className="cart-button">+</button>
-                      <div className="quantity">1</div>
-                      <button className="cart-button">-</button>
-                    </div>
-                  </div>
-                </div>
-                <img src=".\img\sushi1.jpg" alt="" width={80} height={80} />
-              </div>
-              <div className="cart-item d-flex p-10">
-                <div className="info">
-                  <div className="ident">
-                    <p className="cart-title">
-                      Філадельфія з лососем та креветкою
-                    </p>
-                    <div className="ident d-flex align-center">
-                      <button className="cart-button">+</button>
-                      <div className="quantity">1</div>
-                      <button className="cart-button">-</button>
-                    </div>
-                  </div>
-                </div>
-                <img src=".\img\sushi1.jpg" alt="" width={80} height={80} />
-              </div>
-              <div className="cart-item d-flex p-10">
-                <div className="info">
-                  <div className="ident">
-                    <p className="cart-title">
-                      Філадельфія з лососем та креветкою
-                    </p>
-                    <div className="ident d-flex align-center">
-                      <button className="cart-button">+</button>
-                      <div className="quantity">1</div>
-                      <button className="cart-button">-</button>
-                    </div>
-                  </div>
-                </div>
-                <img src=".\img\sushi1.jpg" alt="" width={80} height={80} />
-              </div>
-              <div className="cart-item d-flex p-10">
-                <div className="info">
-                  <div className="ident">
-                    <p className="cart-title">
-                      Філадельфія з лососем та креветкою
-                    </p>
-                    <div className="ident d-flex align-center">
-                      <button className="cart-button">+</button>
-                      <div className="quantity">1</div>
-                      <button className="cart-button">-</button>
-                    </div>
-                  </div>
-                </div>
-                <img src=".\img\sushi1.jpg" alt="" width={80} height={80} />
-              </div>
-              <div className="cart-item d-flex p-10">
-                <div className="info">
-                  <div className="ident">
-                    <p className="cart-title">
-                      Філадельфія з лососем та креветкою
-                    </p>
-                    <div className="ident d-flex align-center">
-                      <button className="cart-button">+</button>
-                      <div className="quantity">1</div>
-                      <button className="cart-button">-</button>
-                    </div>
-                  </div>
-                </div>
-                <img src=".\img\sushi1.jpg" alt="" width={80} height={80} />
-              </div>
-              <div className="cart-item d-flex p-10">
-                <div className="info">
-                  <div className="ident">
-                    <p className="cart-title">
-                      Філадельфія з лососем та креветкою
-                    </p>
-                    <div className="ident d-flex align-center">
-                      <button className="cart-button">+</button>
-                      <div className="quantity">1</div>
-                      <button className="cart-button">-</button>
-                      <p>200 грн</p>
-                    </div>
-                  </div>
-                </div>
-                <img src=".\img\sushi1.jpg" alt="" width={80} height={80} />
-              </div>
-            </div>
-            {/* <div className="user-block">
+      <aside className="cart d-flex">
+        <div className="cart-container">
+          <div className="d-flex justify-between">
+            <h3>Ваше замовлення</h3>
+            <div className="cross"></div>
+          </div>
+          <div className="cart-items-container">
+            {items.map((item) => (
+              <CartItem key={item.id} {...item}></CartItem>
+            ))}
+          </div>
+          <div className="user-block">
             <h3 className="">Особисті дані</h3>
             <form className="tex">
               <p>Ім'я</p>
@@ -197,11 +62,10 @@ const Cart = ({ onAddToCart }) => {
                 <label for="huey">Картка</label>
               </form>
             </div>
-          </div> */}
           </div>
-          <p></p>
-        </aside>
-      </div>
+        </div>
+        <p></p>
+      </aside>
     </>
   );
 };

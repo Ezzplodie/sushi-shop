@@ -17,11 +17,12 @@ function App() {
   return (
     <>
       <div className="wrapper">
-        <Header></Header>
-        <Cart></Cart>
         <div className="container">
+          <Header></Header>
+          {/* <Cart></Cart> */}
           <Routes>
-            {/* <Route path="/cart" element={<Cart></Cart>}></Route> */}
+            {/* <Cart></Cart> */}
+            <Route path="/cart" element={<Cart></Cart>}></Route>
             <Route path="/" element={<Home></Home>}></Route>
             <Route path="*" element={<NotFound></NotFound>}></Route>
           </Routes>

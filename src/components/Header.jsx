@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 export default function Header() {
   const { items, totalPrice } = useSelector((state) => state.cart);
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
   return (
     <header className="header d-flex justify-between">
       <Link to="/">
@@ -14,13 +15,14 @@ export default function Header() {
           </div>
         </div>
       </Link>
-
-      <div className="header-cart d-flex">
-        <p className="">{totalPrice} грн</p>
-        <div className="header-line"> </div>
-        <img src="./img/cart.svg" alt="" />
-        <p>{items.length} шт.</p>
-      </div>
+      <Link to="/cart">
+        <div className="header-cart d-flex">
+          <p className="">{totalPrice} грн</p>
+          <div className="header-line"> </div>
+          <img src="./img/cart.svg" alt="" />
+          <p>{totalCount} шт.</p>
+        </div>
+      </Link>
     </header>
   );
 }
