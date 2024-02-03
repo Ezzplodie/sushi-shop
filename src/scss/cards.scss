@@ -6,7 +6,11 @@
   flex-wrap: wrap;
   margin: 0 auto;
 }
+
 .card {
+  .pizza-img {
+    height: 350px;
+  }
   margin: 25px 10px;
   background: #fff;
   border-radius: 10px;

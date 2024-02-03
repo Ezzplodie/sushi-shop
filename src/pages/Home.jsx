@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import Card from "../components/Card";
 import axios from "axios";
 import Skeleton from "../components/Skeleton";
-import { setActiveCategory } from "../redux/slices/filterSlice";
+import { setActiveCategory, setFilters } from "../redux/slices/filterSlice";
+import qs from "qs";
+import { useNavigate } from "react-router-dom";
+import {
+  setItems,
+  fetchSushiItems,
+  fetchSushiItemsAsync,
+} from "../redux/slices/sushiSlice";
 
 const Home = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const activeCategory = useSelector((state) => state.filter.activeCategory);
   const [activeCategoryValue, setActiveCategoryValue] = useState("Все меню");
@@ -15,7 +24,6 @@ const Home = () => {
     setActiveCategoryValue(value);
   };
   const onChangeCategory = (index) => {
-    console.log(index);
     dispatch(setActiveCategory(index));
   };
 
@@ -23,28 +31,50 @@ const Home = () => {
   const onClickCart = (sushi) => {
     setOnAddToCart((prev) => [...prev, sushi]);
   };
-
-  const [sushiItems, setSushiItems] = useState([]);
+  const sushiItems = useSelector((state) => state.sushi.items);
+  const status = useSelector((state) => state.sushi.status);
+  console.log(status, "STATUS");
   const [isLoaded, setIsLoaded] = useState(true);
   useEffect(() => {
-    console.log("useEffect is running");
-
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      dispatch(
+        setFilters({
+          ...params,
+        })
+      );
+    }
+  }, []);
+  useEffect(() => {
     const fetchData = async () => {
+      const category = activeCategory > 0 ? `category=${activeCategory}` : "";
+
+      setIsLoaded(true);
       try {
-        setIsLoaded(true);
-        let apiUrl = `https://65746482f941bda3f2afb0ff.mockapi.io/sushi_items`;
-        if (activeCategory) {
-          apiUrl += "?category=" + activeCategory;
-        }
-        const response = await axios.get(apiUrl);
-        setSushiItems(response.data);
+        const { data } = await axios.get(
+          `https://65746482f941bda3f2afb0ff.mockapi.io/sushi_items?page=${category}`
+        );
+        dispatch(
+          fetchSushiItemsAsync({
+            data,
+            category,
+            activeCategory,
+          })
+        );
         setIsLoaded(false);
-      } catch (error) {
-        console.error("Error fetching sushi items:", error);
+      } finally {
       }
     };
 
     fetchData();
+  }, [activeCategory]);
+
+  useEffect(() => {
+    const queryString = qs.stringify({
+      activeCategory,
+    });
+    // console.log(queryString);
+    navigate(`?${queryString}`);
   }, [activeCategory]);
 
   return (
@@ -62,17 +92,23 @@ const Home = () => {
 
         <div className="cards-container">
           <div className="cards ">
-            {isLoaded
-              ? [...new Array(6)].map((_, index) => (
-                  <Skeleton key={index}></Skeleton>
-                ))
-              : sushiItems.map((obj) => (
-                  <Card
-                    onClickCart={() => onClickCart(obj)}
-                    key={obj.id}
-                    {...obj}
-                  ></Card>
-                ))}
+            {status === "error" ? (
+              <div className="error">
+                <h2>ПОКИ ПУСТО... ОЧІКУЙТЕ НА ОНОВЛЕННЯ МЕНЮ 👽</h2>
+              </div>
+            ) : isLoaded ? (
+              [...new Array(6)].map((_, index) => (
+                <Skeleton key={index}></Skeleton>
+              ))
+            ) : (
+              sushiItems.map((obj) => (
+                <Card
+                  onClickCart={() => onClickCart(obj)}
+                  key={obj.id}
+                  {...obj}
+                ></Card>
+              ))
+            )}
           </div>
         </div>
       </section>

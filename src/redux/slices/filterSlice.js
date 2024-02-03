@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   activeCategory: 0,
 };
-console.log(initialState);
 
 const filterSlice = createSlice({
   name: "filters",
@@ -11,11 +10,13 @@ const filterSlice = createSlice({
   reducers: {
     setActiveCategory(state, action) {
       state.activeCategory = action.payload;
-      console.log("action", action);
+    },
+    setFilters(state, action) {
+      state.activeCategory = Number(action.payload.activeCategory);
     },
   },
 });
 
-export const { setActiveCategory } = filterSlice.actions;
+export const { setActiveCategory, setFilters } = filterSlice.actions;
 
 export default filterSlice.reducer;
