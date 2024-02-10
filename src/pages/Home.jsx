@@ -8,11 +8,7 @@ import Skeleton from "../components/Skeleton";
 import { setActiveCategory, setFilters } from "../redux/slices/filterSlice";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
-import {
-  setItems,
-  fetchSushiItems,
-  fetchSushiItemsAsync,
-} from "../redux/slices/sushiSlice";
+import { fetchSushiItemsAsync } from "../redux/slices/sushiSlice";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -91,7 +87,7 @@ const Home = () => {
         </div>
 
         <div className="cards-container">
-          <div className="cards ">
+          <div className="cards">
             {status === "error" ? (
               <div className="error">
                 <h2>ПОКИ ПУСТО... ОЧІКУЙТЕ НА ОНОВЛЕННЯ МЕНЮ 👽</h2>
@@ -103,8 +99,8 @@ const Home = () => {
             ) : (
               sushiItems.map((obj) => (
                 <Card
-                  onClickCart={() => onClickCart(obj)}
                   key={obj.id}
+                  onClickCart={() => onClickCart(obj)}
                   {...obj}
                 ></Card>
               ))

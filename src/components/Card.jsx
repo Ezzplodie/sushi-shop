@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../redux/slices/cartSlice";
+import { Link } from "react-router-dom";
 export default function Card({
   image,
   title,
@@ -26,10 +27,12 @@ export default function Card({
 
   return (
     <div className="card">
-      <div className="pizza-img">
-        <img src={image} alt="" />
-      </div>
-      <h3>{title}</h3>
+      <Link to={`/sushi/${id}`}>
+        <div className="pizza-img">
+          <img src={image} alt="" />
+        </div>
+        <h3>{title}</h3>
+      </Link>
 
       <div className="pizza-container">
         <div className="pizza-options">

@@ -6,7 +6,7 @@ import NotFound from "./pages/NotFound";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Cart from "./pages/Cart";
 import React from "react";
-
+import SushiFull from "./pages/sushiFull";
 import filterSlice from "./redux/slices/filterSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "./redux/slices/filterSlice";
@@ -19,9 +19,8 @@ function App() {
       <div className="wrapper">
         <div className="container">
           <Header></Header>
-          {/* <Cart></Cart> */}
           <Routes>
-            {/* <Cart></Cart> */}
+            <Route path="/sushi/:id" element={<SushiFull></SushiFull>}></Route>
             <Route path="/cart" element={<Cart></Cart>}></Route>
             <Route path="/" element={<Home></Home>}></Route>
             <Route path="*" element={<NotFound></NotFound>}></Route>

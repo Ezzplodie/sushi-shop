@@ -95,6 +95,9 @@ const Cart = () => {
         ) : (
           <div className="cart-container">
             <h3 className="text-center">Корзина пуста</h3>
+            <Link to={"/"}>
+              <button className=" mb-50">НА ГОЛОВНУ СТОРІНКУ</button>
+            </Link>
           </div>
         )}
       </aside>
