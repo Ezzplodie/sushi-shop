@@ -9,7 +9,12 @@
 
 .card {
   .pizza-img {
-    height: 350px;
+    // height: 350px;
+    width: auto;
+    object-fit: cover;
+  }
+  img {
+    object-fit: cover;
   }
   margin: 25px 10px;
   background: #fff;
@@ -114,8 +119,18 @@
   }
 }
 .pizza-container {
-  height: 115px;
+  // height: 115px;
 }
 a {
   color: black !important;
+}
+.hover-sushi-text {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-sushi-text.visible {
+  opacity: 1;
+  display: block;
 }

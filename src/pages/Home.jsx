@@ -28,6 +28,15 @@ const Home = () => {
     setOnAddToCart((prev) => [...prev, sushi]);
   };
   const sushiItems = useSelector((state) => state.sushi.items);
+  const sushiSets =
+    sushiItems.length > 0
+      ? sushiItems.filter((sushi) => sushi.category === 1)
+      : [];
+  const sushiRolls =
+    sushiItems.length > 0
+      ? sushiItems.filter((sushi) => sushi.category === 2)
+      : [];
+  console.log(sushiSets);
   const status = useSelector((state) => state.sushi.status);
   console.log(status, "STATUS");
   const [isLoaded, setIsLoaded] = useState(true);
@@ -97,7 +106,7 @@ const Home = () => {
                 <Skeleton key={index}></Skeleton>
               ))
             ) : (
-              sushiItems.map((obj) => (
+              sushiRolls.map((obj) => (
                 <Card
                   key={obj.id}
                   onClickCart={() => onClickCart(obj)}
@@ -105,6 +114,16 @@ const Home = () => {
                 ></Card>
               ))
             )}
+          </div>
+
+          <div className="cards sets">
+            {sushiSets.map((obj) => (
+              <Card
+                key={obj.id}
+                onClickCart={() => onClickCart(obj)}
+                {...obj}
+              />
+            ))}
           </div>
         </div>
       </section>
