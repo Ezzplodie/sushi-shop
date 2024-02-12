@@ -124,13 +124,19 @@
 a {
   color: black !important;
 }
-.hover-sushi-text {
-  display: none;
+/* Анимация для появления */
+.fade-enter {
   opacity: 0;
-  transition: opacity 0.3s ease;
 }
-
-.hover-sushi-text.visible {
+.fade-enter-active {
   opacity: 1;
-  display: block;
+  transition: opacity 300ms ease-in;
+}
+/* Анимация для исчезновения */
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-out;
 }

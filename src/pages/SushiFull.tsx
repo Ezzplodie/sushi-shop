@@ -2,9 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const SushiFull = () => {
+interface Sushi {
+  imageUrl: string;
+  title: string;
+  price: number;
+  ingredients: string[];
+}
+const SushiFull: React.FC = () => {
   const { id } = useParams();
-  const [sushi, setSushi] = useState(null); // Initialize sushi state as null
+  const [sushi, setSushi] = useState<Sushi>(); // Initialize sushi state as null
 
   useEffect(() => {
     async function fetchSushi() {

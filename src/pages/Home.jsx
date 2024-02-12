@@ -115,7 +115,6 @@ const Home = () => {
               ))
             )}
           </div>
-
           <div className="cards sets">
             {sushiSets.map((obj) => (
               <Card

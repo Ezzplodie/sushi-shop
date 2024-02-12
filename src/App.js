@@ -6,7 +6,7 @@ import NotFound from "./pages/NotFound";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Cart from "./pages/Cart";
 import React from "react";
-import SushiFull from "./pages/sushiFull";
+import SushiFull from "./pages/SushiFull.tsx";
 import filterSlice from "./redux/slices/filterSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "./redux/slices/filterSlice";
